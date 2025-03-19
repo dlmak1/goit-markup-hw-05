@@ -813,6 +813,7 @@ img {
 .btn-submit:hover,
 .btn-submit:focus {
     background-color: #404bbf;
+    border: none;
 }
 
 /*#endregion */
