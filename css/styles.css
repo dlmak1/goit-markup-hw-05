@@ -580,66 +580,65 @@ img {
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 999;
     width: 100vw;
     height: 100vh;
     background-color: rgba(46, 47, 66, 0.4);
+    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+        visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
     opacity: 0;
     visibility: hidden;
-    pointer-events: none;
-    transition: opacity 250ms ease, visibility 250ms ease;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
 }
 
 .backdrop.is-open {
     opacity: 1;
     visibility: visible;
-    pointer-events: auto;
 }
 
-/* === MODAL === */
+/* === modal window === */
 .modal {
-    position: relative;
-    max-width: 408px;
-    width: 100%;
-    background-color: #fcfcfc;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-height: 584px;
+    width: 408px;
+    background-color: #fff;
+    padding: 24px;
     border-radius: 4px;
-    padding: 72px 24px 24px;
-    box-shadow: 0px 4px 60px rgba(0, 0, 0, 0.2);
+    box-shadow:
+        0px 1px 1px rgba(0, 0, 0, 0.14),
+        0px 1px 3px rgba(0, 0, 0, 0.12),
+        0px 2px 1px rgba(0, 0, 0, 0.2);
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* === CLOSE BUTTON === */
+/* === close button === */
 .modal-close-btn {
     position: absolute;
-    top: 24px;
-    right: 24px;
-    width: 24px;
-    height: 24px;
-    background-color: #e7e9fc;
+    top: 8px;
+    right: 8px;
+    background-color: #E7E9FC;
     border: none;
     border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 24px;
+    height: 24px;
     cursor: pointer;
-    transition: background-color 250ms ease;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal-close-btn:hover,
 .modal-close-btn:focus {
-    background-color: #4d5ae5;
+    background-color: #404bbf;
 }
 
 .icon-close {
-    stroke: #2e2f42;
-    transition: stroke 250ms ease;
+    transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal-close-btn:hover .icon-close,
 .modal-close-btn:focus .icon-close {
-    stroke: #fff;
+    fill: #ffffff;
 }
 
 /* === TITLE === */
@@ -685,21 +684,24 @@ img {
     border-radius: 4px;
     border: 1px solid rgba(46, 47, 66, 0.4);
     background-color: transparent;
-    transition: border-color 250ms ease;
+    color: rgba(46, 47, 66, 0.4);
+    transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.form-input:focus {
-    outline: none;
-    border-color: #4d5ae5;
+.form-input:focus,
+.user-comment:focus {
+    border-color: #4D5AE5;
 }
 
 .form-icon {
     position: absolute;
-    left: 16px;
     top: 50%;
+    left: 16px;
     transform: translateY(-50%);
-    fill: #2e2f42;
-    pointer-events: none;
+    transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.form-input:focus+.form-icon {
+    fill: #4D5AE5;
 }
 
 /* === TEXTAREA === */
@@ -728,11 +730,13 @@ img {
 .checkbox-wrapper {
     display: flex;
     align-items: center;
+    gap: 8px;
     margin-bottom: 24px;
 }
 
 .checkbox-input {
-    display: none;
+    appearance: none;
+    position: absolute;
 }
 
 .checkbox {
@@ -743,10 +747,10 @@ img {
     height: 16px;
     border: 1px solid rgba(46, 47, 66, 0.4);
     border-radius: 2px;
-    margin-right: 8px;
-    background-color: transparent;
-    flex-shrink: 0;
-    box-sizing: border-box;
+    fill: transparent;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+        border 250ms cubic-bezier(0.4, 0, 0.2, 1),
+        fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .icon-checkbox {
@@ -757,8 +761,9 @@ img {
 }
 
 .checkbox-input:checked+.checkbox-text .checkbox {
-    background-color: var(--color-dark-blue, #4d5ae5);
+    background-color: #404bbf;
     border: none;
+    fill: #F4F4FD;
 }
 
 .checkbox-input:checked+.checkbox-text .icon-checkbox {
@@ -767,12 +772,9 @@ img {
 
 .checkbox-text {
     font-size: 12px;
+    color: #8E8F99;
     line-height: 1.17;
     letter-spacing: 0.04em;
-    color: var(--color-g, #8e8f99);
-    display: flex;
-    align-items: center;
-    white-space: nowrap;
 }
 
 .policy {
@@ -793,12 +795,13 @@ img {
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
     align-self: center;
     cursor: pointer;
-    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+            border 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-send:hover,
 .btn-send:focus {
-    background-color: var(--color-dark-blue, #404bbf);
+    background-color: #404bbf;
 }
 
 /*#endregion */
