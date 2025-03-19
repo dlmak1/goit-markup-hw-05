@@ -501,7 +501,7 @@
 
     <!-- modal window -->
 
-    <div class="backdrop is-open">
+    <div class="backdrop">
       <div class="modal">
         <button class="modal-close-btn" type="button">
           <svg class="icon-close" width="8" height="8">
@@ -593,5 +593,34 @@
         </form>
       </div>
     </div>
+    <script>
+      const openBtn = document.querySelector(".button-one");
+      const backdrop = document.querySelector(".backdrop");
+      const closeBtn = document.querySelector(".modal-close-btn");
+
+      openBtn.addEventListener("click", () => {
+        backdrop.classList.add("is-open");
+        window.addEventListener("keydown", onEscPress); // Слухач для Escape
+      });
+
+      closeBtn.addEventListener("click", closeModal);
+
+      backdrop.addEventListener("click", (e) => {
+        if (e.target === backdrop) {
+          closeModal();
+        }
+      });
+
+      function onEscPress(e) {
+        if (e.key === "Escape") {
+          closeModal();
+        }
+      }
+
+      function closeModal() {
+        backdrop.classList.remove("is-open");
+        window.removeEventListener("keydown", onEscPress);
+      }
+    </script>
   </body>
 </html>
