@@ -630,11 +630,11 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: none;
 }
 
 .modal-close-btn:hover,
 .modal-close-btn:focus {
+    border: none;
     background-color: #404bbf;
 }
 
