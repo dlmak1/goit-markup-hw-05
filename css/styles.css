@@ -630,6 +630,7 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
+    border: none;
 }
 
 .modal-close-btn:hover,
@@ -813,7 +814,6 @@ img {
 .btn-submit:hover,
 .btn-submit:focus {
     background-color: #404bbf;
-    border: none;
 }
 
 /*#endregion */
