@@ -526,7 +526,7 @@ img {
         margin-bottom: 16px;
 }
 
-.subscription-form {
+.subscription-wrapper {
     display: flex;
     gap: 24px;
 }
@@ -568,6 +568,10 @@ img {
     height: 40px;
     border: none;
 }
+.subscription-button:hover,
+.subscription-button:focus {
+    background-color: #404bbf;
+}
 
 .subscription-icon {
     margin-left: 16px;
@@ -586,7 +590,7 @@ img {
     width: 100vw;
     height: 100vh;
     background-color: rgba(46, 47, 66, 0.4);
-    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
     visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
     opacity: 0;
     visibility: hidden;
@@ -741,7 +745,7 @@ img {
 /* === CHECKBOX === */
 .checkbox-wrapper {
     display: flex;
-    align-items: center;
+    align-items: center; 
     gap: 8px;
     margin-bottom: 24px;
 }
@@ -763,6 +767,7 @@ img {
     transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
         border 250ms cubic-bezier(0.4, 0, 0.2, 1),
         fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    margin-right: 8px;
 }
 
 .icon-checkbox {
@@ -793,6 +798,7 @@ img {
     text-decoration: underline;
     color: #4d5ae5;
     margin-left: 4px;
+    display: inline;
 }
 
 .btn-submit {
